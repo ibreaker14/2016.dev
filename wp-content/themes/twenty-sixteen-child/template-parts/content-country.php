@@ -65,8 +65,10 @@
 	<footer class="entry-footer">
 		<?php twentysixteen_entry_meta(); ?>
 
-		<?php echo get_the_term_list($post->ID,'country-taxonomy','<div class="content-item">','<br>','</div><br>');//display categories
-		?>
+		<?php
+		//outputs list of items in custom category "country-taxonomy"
+		 echo get_the_term_list($post->ID,'country-taxonomy','<div class="content-item">','<br>','</div><br>');?>
+		
 
 		<?php
 			edit_post_link(
