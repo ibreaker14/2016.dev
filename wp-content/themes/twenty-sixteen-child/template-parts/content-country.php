@@ -23,14 +23,32 @@
 
 	<div class="entry-content">
 		<?php
-			$country_price = get_post_meta(get_the_id(),'Price',true);//displays Price custom Field 
-			echo "It costs $". $country_price."<br>";
+			if(get_post_meta(get_the_ID(),'Price',true)){//if it exists
+				$country_price = get_post_meta(get_the_id(),'Price',true);//displays Price custom Field 
+				echo "It costs $". $country_price." to go <br>";
+			}
 
+			//displays TYPES price custom field
+			if(get_post_meta(get_the_ID(),'wpcf-start-date',true)){//if it exists
+				$types_country_price = get_post_meta(get_the_id(),'wpcf-start-date',true);//displays Price custom Field 
+				echo "The original price was $". $types_country_price."<br>";
+			}
+
+			//display date field
+			if(get_post_meta(get_the_ID(),"start-date",true)){
 			$display_date=date("F d, Y", strtotime(get_post_meta($post->ID,"start-date",true)));
 			echo "Trip began on: ". $display_date. "<br>";
+			}
+
+			//display planes field
+			if(get_post_meta(get_the_id(),'Planes',true)){
+			$plane_type = get_post_meta(get_the_id(),'Planes',true);
+			echo "You can get there by flying: ". $plane_type . "<br>";
+			}
 
 			/* translators: %s: Name of current post */
-			echo "<br";
+			echo "<small><br>Today's date: " . date("F d,Y") . " at " . date("h:ia") . "<br></small>";
+			echo "<br>";
 			the_content();
 
 			wp_link_pages( array(
@@ -46,6 +64,10 @@
 
 	<footer class="entry-footer">
 		<?php twentysixteen_entry_meta(); ?>
+
+		<?php echo get_the_term_list($post->ID,'country-taxonomy','<div class="content-item">','<br>','</div><br>');//display categories
+		?>
+
 		<?php
 			edit_post_link(
 				sprintf(
