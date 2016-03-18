@@ -12,3 +12,15 @@
  /* == Add your own styles below this line ==
 --------------------------------------------*/
 
+body{
+	//background: none;
+
+}
+
+.site-content{
+	margin:0
+}
+
+#content{
+	margin:0;
+}
