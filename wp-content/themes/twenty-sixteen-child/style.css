@@ -13,7 +13,7 @@
 --------------------------------------------*/
 
 body{
-	//background: none;
+	background: none;
 
 }
 
@@ -23,4 +23,15 @@ body{
 
 #content{
 	margin:0;
+}
+
+.ibreaker_extra_menu_class ul li{
+	list-style:none;
+	display: inline-block;
+	font-size: 0.7em;
+	padding: 0 1em 0 1em;
+}
+
+.ibreaker_extra_menu_class a{
+	font-weight: bold;
 }
